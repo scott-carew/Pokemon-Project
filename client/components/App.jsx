@@ -3,12 +3,21 @@ import { getPokemonData, getPokemonList } from '../apiClient'
 import Welcome from './Welcome'
 import Pokemon from './Pokemon'
 import PokeCard from './PokeCard'
-import { Button, VStack, Spacer, Box, Center, Image } from '@chakra-ui/react'
+import {
+  Button,
+  VStack,
+  Spacer,
+  Box,
+  Center,
+  Image,
+  Input,
+} from '@chakra-ui/react'
 
 function App() {
   const [pokemonData, setPokemonData] = useState([])
   const [pokeCardInfo, setPokeCardInfo] = useState()
-  const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon/')
+
+  const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon/?limit=80?')
   const [nextUrl, setNextUrl] = useState()
   const [prevUrl, setPrevUrl] = useState()
 
@@ -48,6 +57,7 @@ function App() {
           <Spacer />
           <Welcome />
           <PokeCard data={pokeCardInfo} />
+          {console.log(pokemonData)}
           <Pokemon
             pokemonData={pokemonData}
             pokeInfo={(poke) => setPokeCardInfo(poke)}
