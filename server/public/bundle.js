@@ -37271,7 +37271,9 @@ function App() {
     bgGradient: "linear(red.100 0%, orange.100 25%, yellow.100 50%)"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_5__.VStack, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_5__.Spacer, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Welcome__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PokeCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
     data: pokeCardInfo
-  }), console.log(pokemonData), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Pokemon__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), console.log(pokemonData), pokemonData.map(function (pokemon) {
+    return pokemon.name.includes(filter);
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Pokemon__WEBPACK_IMPORTED_MODULE_3__["default"], {
     pokemonData: pokemonData,
     pokeInfo: function pokeInfo(poke) {
       return setPokeCardInfo(poke);

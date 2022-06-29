@@ -58,6 +58,7 @@ function App() {
           <Welcome />
           <PokeCard data={pokeCardInfo} />
           {console.log(pokemonData)}
+          {pokemonData.map((pokemon) => pokemon.name.includes(filter))}
           <Pokemon
             pokemonData={pokemonData}
             pokeInfo={(poke) => setPokeCardInfo(poke)}
