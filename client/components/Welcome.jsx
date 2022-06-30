@@ -2,22 +2,18 @@ import React, { useState, useEffect } from 'react'
 
 import { getWelcome } from '../apiClient'
 
-import {
-  Heading,
-  Image,
-  Center
-} from '@chakra-ui/react'
+import { Heading, Image, Center } from '@chakra-ui/react'
 
-const themeTune = new Audio('/Audio/pokemon-theme.mp3')
+// const themeTune = new Audio('/Audio/pokemon-theme.mp3')
 
-const handleThemeTune = (e) => {
-  if (e.type === 'mouseover') {
-    themeTune.play()
-  } else if (e.type === 'mouseleave') {
-    themeTune.pause()
-    themeTune.currentTime = 0
-  }
-}
+// const handleThemeTune = (e) => {
+//   if (e.type === 'mouseover') {
+//     themeTune.play()
+//   } else if (e.type === 'mouseleave') {
+//     themeTune.pause()
+//     themeTune.currentTime = 0
+//   }
+// }
 
 export default function Welcome() {
   const [welcomeStatement, setWelcomeStatement] = useState('')
@@ -43,8 +39,8 @@ export default function Welcome() {
         {welcomeStatement}
         <Center mt="30px">
           <Image
-            onMouseOver={handleThemeTune}
-            onMouseLeave={handleThemeTune}
+            // onMouseOver={handleThemeTune}
+            // onMouseLeave={handleThemeTune}
             src="/Images/pngegg.png"
             alt=""
             w="320px"

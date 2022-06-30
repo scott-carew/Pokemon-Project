@@ -12,19 +12,10 @@ import {
 } from '@chakra-ui/react'
 
 export default function Pokemon({ pokemonData, pokeInfo }) {
-  const [filter, setFilter] = useState('')
-
-  const handleSearchFilter = (e) => {
-    setFilter(e.target.value)
-    console.log(filter)
-  }
-
   return (
     <>
-      <Input bgColor="gray.300" onChange={handleSearchFilter} />
       <Grid templateColumns="repeat(4, 1fr)" gap={50}>
         {pokemonData.map((pokemon) => {
-          pokemon.name.includes(filter)
           return (
             <GridItem
               mt="30px"
