@@ -37279,7 +37279,7 @@ function App() {
   }
 
   var handleSearchFilter = function handleSearchFilter(e) {
-    setFilter(e.target.value); // console.log('filter is', filter)
+    setFilter(e.target.value);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {

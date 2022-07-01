@@ -53,7 +53,6 @@ function App() {
 
   const handleSearchFilter = (e) => {
     setFilter(e.target.value)
-    // console.log('filter is', filter)
   }
 
   useEffect(() => {
@@ -84,14 +83,12 @@ function App() {
           />
           <PokeCard data={pokeCardInfo} />
           {console.log('pokemon data is', pokemonData)}
-          {/* {pokemonData.map((pokemon) => pokemon.name.includes(filter)) && ( */}
           <Pokemon
             pokemonData={
               filteredPokemonData ? filteredPokemonData : pokemonData
             }
             pokeInfo={(poke) => setPokeCardInfo(poke)}
           />
-          {/* )} */}
         </VStack>
         <Center mt="30px">
           {prevUrl !== null ? (
