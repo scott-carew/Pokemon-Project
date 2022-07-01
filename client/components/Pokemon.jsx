@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import {
   Text,
@@ -8,6 +8,7 @@ import {
   Grid,
   GridItem,
   Spacer,
+  Input,
 } from '@chakra-ui/react'
 
 export default function Pokemon({ pokemonData, pokeInfo }) {

@@ -3,12 +3,26 @@ import { getPokemonData, getPokemonList } from '../apiClient'
 import Welcome from './Welcome'
 import Pokemon from './Pokemon'
 import PokeCard from './PokeCard'
-import { Button, VStack, Spacer, Box, Center, Image } from '@chakra-ui/react'
+import {
+  Button,
+  VStack,
+  Spacer,
+  Box,
+  Center,
+  Image,
+  Input,
+} from '@chakra-ui/react'
+
+import { faSearch } from 'react-icons'
 
 function App() {
   const [pokemonData, setPokemonData] = useState([])
+  const [filteredPokemonData, setFilteredPokemonData] = useState(null)
   const [pokeCardInfo, setPokeCardInfo] = useState()
-  const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon/')
+  const [filter, setFilter] = useState('')
+  const [url, setUrl] = useState(
+    'https://pokeapi.co/api/v2/pokemon/?limit=648?'
+  )
   const [nextUrl, setNextUrl] = useState()
   const [prevUrl, setPrevUrl] = useState()
 
@@ -17,7 +31,6 @@ function App() {
       .then((pokemonList) => {
         setNextUrl(pokemonList.next)
         setPrevUrl(pokemonList.previous)
-        console.log(nextUrl)
         return pokemonList
       })
       .then((pokemonList) =>
@@ -38,6 +51,22 @@ function App() {
     setUrl(prevUrl)
   }
 
+  const handleSearchFilter = (e) => {
+    setFilter(e.target.value)
+    // console.log('filter is', filter)
+  }
+
+  useEffect(() => {
+    if (filter === '') {
+      setFilteredPokemonData(null)
+    } else {
+      const filteredPokemon = pokemonData.filter((pokemon) => {
+        return pokemon.name.includes(filter)
+      })
+      setFilteredPokemonData(filteredPokemon)
+    }
+  }, [filter])
+
   return (
     <>
       <Box
@@ -47,11 +76,22 @@ function App() {
         <VStack>
           <Spacer />
           <Welcome />
+          <Input
+            bgColor="blue.100"
+            onChange={handleSearchFilter}
+            placeholder="Search pokemon by name"
+            w="50%"
+          />
           <PokeCard data={pokeCardInfo} />
+          {console.log('pokemon data is', pokemonData)}
+          {/* {pokemonData.map((pokemon) => pokemon.name.includes(filter)) && ( */}
           <Pokemon
-            pokemonData={pokemonData}
+            pokemonData={
+              filteredPokemonData ? filteredPokemonData : pokemonData
+            }
             pokeInfo={(poke) => setPokeCardInfo(poke)}
           />
+          {/* )} */}
         </VStack>
         <Center mt="30px">
           {prevUrl !== null ? (
