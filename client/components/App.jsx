@@ -13,12 +13,16 @@ import {
   Input,
 } from '@chakra-ui/react'
 
+import { faSearch } from 'react-icons'
+
 function App() {
   const [pokemonData, setPokemonData] = useState([])
   const [filteredPokemonData, setFilteredPokemonData] = useState(null)
   const [pokeCardInfo, setPokeCardInfo] = useState()
   const [filter, setFilter] = useState('')
-  const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon/?limit=80?')
+  const [url, setUrl] = useState(
+    'https://pokeapi.co/api/v2/pokemon/?limit=648?'
+  )
   const [nextUrl, setNextUrl] = useState()
   const [prevUrl, setPrevUrl] = useState()
 
@@ -72,7 +76,12 @@ function App() {
         <VStack>
           <Spacer />
           <Welcome />
-          <Input bgColor="gray.200" onChange={handleSearchFilter} />
+          <Input
+            bgColor="blue.100"
+            onChange={handleSearchFilter}
+            placeholder="Search pokemon by name"
+            w="50%"
+          />
           <PokeCard data={pokeCardInfo} />
           {console.log('pokemon data is', pokemonData)}
           {/* {pokemonData.map((pokemon) => pokemon.name.includes(filter)) && ( */}
