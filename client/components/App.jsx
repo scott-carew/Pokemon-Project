@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 
 import { getPokemonData, getPokemonList } from '../apiClient'
@@ -77,24 +77,26 @@ function App() {
         <VStack>
           <Spacer />
           <Welcome />
-          <Input
-            bgColor="blue.100"
-            onChange={handleSearchFilter}
-            placeholder="Search pokemon by name"
-            w="50%"
-          />
           <Routes>
             <Route
               path="/"
               element={
-                <Pokemon
-                  pokemonData={
-                    filteredPokemonData ? filteredPokemonData : pokemonData
-                  }
-                  pokeInfo={(poke) => setPokeCardInfo(poke)}
-                />
+                <>
+                  <Input
+                    bgColor="blue.100"
+                    onChange={handleSearchFilter}
+                    placeholder="Search pokemon by name"
+                    w="50%"
+                  />
+                  <Pokemon
+                    pokemonData={
+                      filteredPokemonData ? filteredPokemonData : pokemonData
+                    }
+                    pokeInfo={(poke) => setPokeCardInfo(poke)}
+                  />
+                </>
               }
-            />
+            ></Route>
             <Route
               path="/pokemon/:name"
               element={<PokeCard data={pokeCardInfo} />}
