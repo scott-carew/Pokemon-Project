@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
+
 import { getPokemonData, getPokemonList } from '../apiClient'
 import Welcome from './Welcome'
 import Pokemon from './Pokemon'
@@ -81,25 +83,38 @@ function App() {
             placeholder="Search pokemon by name"
             w="50%"
           />
-          <PokeCard data={pokeCardInfo} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Pokemon
+                  pokemonData={
+                    filteredPokemonData ? filteredPokemonData : pokemonData
+                  }
+                  pokeInfo={(poke) => setPokeCardInfo(poke)}
+                />
+              }
+            />
+            <Route
+              path="/pokemon/:name"
+              element={<PokeCard data={pokeCardInfo} />}
+            />
+          </Routes>
+
           {console.log('pokemon data is', pokemonData)}
-          <Pokemon
-            pokemonData={
-              filteredPokemonData ? filteredPokemonData : pokemonData
-            }
-            pokeInfo={(poke) => setPokeCardInfo(poke)}
-          />
         </VStack>
         <Center mt="30px">
-          {prevUrl !== null ? (
+          {/* {prevUrl !== null ? (
             <Button onClick={() => getPrevUrl(prevUrl)}>Previous</Button>
-          ) : null}
-          <Image
-            onClick={() => setUrl('https://pokeapi.co/api/v2/pokemon/')}
-            src="/Images/pokeball.jpeg"
-            h="100px"
-          />
-          <Button onClick={() => getNextUrl(nextUrl)}>Next</Button>
+          ) : null} */}
+          <Link to="/">
+            <Image
+              // onClick={() => setUrl('https://pokeapi.co/api/v2/pokemon/')}
+              src="/Images/pokeball.jpeg"
+              h="100px"
+            />
+          </Link>
+          {/* <Button onClick={() => getNextUrl(nextUrl)}>Next</Button> */}
         </Center>
       </Box>
     </>

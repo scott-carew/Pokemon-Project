@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import {
   Text,
@@ -12,6 +13,8 @@ import {
 } from '@chakra-ui/react'
 
 export default function Pokemon({ pokemonData, pokeInfo }) {
+  // let { pokename } = useParams()
+
   return (
     <>
       <Grid templateColumns="repeat(4, 1fr)" gap={50}>
@@ -55,10 +58,12 @@ export default function Pokemon({ pokemonData, pokeInfo }) {
                   src={pokemon.sprites.other.dream_world.front_default}
                 />
                 <Spacer />
-                <Text fontSize="3xl" color="white" fontWeight="bold">
-                  {pokemon.name.charAt(0).toUpperCase() +
-                    pokemon.name.substr(1)}
-                </Text>
+                <Link to={`/pokemon/${pokemon.name}`}>
+                  <Text fontSize="3xl" color="white" fontWeight="bold">
+                    {pokemon.name.charAt(0).toUpperCase() +
+                      pokemon.name.substr(1)}
+                  </Text>
+                </Link>
               </HStack>
             </GridItem>
           )
