@@ -7,8 +7,5 @@ export const pokeTheme = extendTheme({
   colors: {
     primary: '#24a0ed',
   },
-  components: {
-    Button,
-    GridItem,
-  },
+  components: { Button, GridItem },
 })

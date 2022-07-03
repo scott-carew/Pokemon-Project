@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Button, Center } from '@chakra-ui/react'
+import { Button, Center, Input } from '@chakra-ui/react'
 
 export default function Home() {
   return (
