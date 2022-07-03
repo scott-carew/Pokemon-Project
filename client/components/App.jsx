@@ -5,6 +5,7 @@ import { getPokemonData, getPokemonList } from '../apiClient'
 import Welcome from './Welcome'
 import Pokemon from './Pokemon'
 import PokeCard from './PokeCard'
+import Home from './Home'
 import {
   Button,
   VStack,
@@ -15,15 +16,13 @@ import {
   Input,
 } from '@chakra-ui/react'
 
-import { faSearch } from 'react-icons'
-
 function App() {
   const [pokemonData, setPokemonData] = useState([])
   const [filteredPokemonData, setFilteredPokemonData] = useState(null)
   const [pokeCardInfo, setPokeCardInfo] = useState()
   const [filter, setFilter] = useState('')
   const [url, setUrl] = useState(
-    'https://pokeapi.co/api/v2/pokemon/?limit=648?'
+    'https://pokeapi.co/api/v2/pokemon/?limit=150?'
   )
   const [nextUrl, setNextUrl] = useState()
   const [prevUrl, setPrevUrl] = useState()
@@ -78,8 +77,9 @@ function App() {
           <Spacer />
           <Welcome />
           <Routes>
+            <Route path="/" element={<Home />} />
             <Route
-              path="/"
+              path="/pokemon"
               element={
                 <>
                   <Input
