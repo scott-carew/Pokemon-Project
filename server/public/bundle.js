@@ -37241,7 +37241,7 @@ function App() {
       filter = _useState8[0],
       setFilter = _useState8[1];
 
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('https://pokeapi.co/api/v2/pokemon/?limit=150?'),
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('https://pokeapi.co/api/v2/pokemon/?limit=648?'),
       _useState10 = _slicedToArray(_useState9, 2),
       url = _useState10[0],
       setUrl = _useState10[1];
@@ -37381,6 +37381,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _chakra_ui_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/layout/dist/chakra-ui-layout.esm.js");
 /* harmony import */ var _chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/image/dist/chakra-ui-image.esm.js");
+/* harmony import */ var _chakra_ui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @chakra-ui/react */ "./node_modules/@chakra-ui/button/dist/chakra-ui-button.esm.js");
 
 
 function PokeCard(_ref) {
@@ -37430,7 +37431,9 @@ function PokeCard(_ref) {
       fontSize: "2xl",
       fontWeight: "extrabold"
     }, item.ability.name));
-  }))));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    variant: 'primary'
+  }, "Capture Pokemon"))));
 }
 
 /***/ }),

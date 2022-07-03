@@ -7,6 +7,7 @@ import {
   Image,
   VStack,
   Center,
+  Button,
 } from '@chakra-ui/react'
 
 export default function PokeCard({ data }) {
@@ -84,6 +85,7 @@ export default function PokeCard({ data }) {
                 </Box>
               )
             })}
+            <Button variant={'primary'}>Capture Pokemon</Button>
           </HStack>
         </Box>
       )}
