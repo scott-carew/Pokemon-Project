@@ -10,6 +10,7 @@ import {
   GridItem,
   Spacer,
 } from '@chakra-ui/react'
+import { whiten } from '@chakra-ui/theme-tools'
 
 export default function Pokemon({ pokemonData, pokeInfo }) {
   return (
@@ -30,7 +31,7 @@ export default function Pokemon({ pokemonData, pokeInfo }) {
               p="6"
               rounded="md"
               key={pokemon.id}
-              _hover={{ bg: '#6575EC' }}
+              _hover={{ bg: whiten('#24a0ed', 20) }}
               _active={{
                 bg: '#dddfe2',
                 transform: 'scale(0.98)',
