@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
+
 import { getPokemonData, getPokemonList } from '../apiClient'
 import Welcome from './Welcome'
 import Pokemon from './Pokemon'
 import PokeCard from './PokeCard'
+import Home from './Home'
 import {
   Button,
   VStack,
@@ -13,15 +16,13 @@ import {
   Input,
 } from '@chakra-ui/react'
 
-import { faSearch } from 'react-icons'
-
 function App() {
   const [pokemonData, setPokemonData] = useState([])
   const [filteredPokemonData, setFilteredPokemonData] = useState(null)
   const [pokeCardInfo, setPokeCardInfo] = useState()
   const [filter, setFilter] = useState('')
   const [url, setUrl] = useState(
-    'https://pokeapi.co/api/v2/pokemon/?limit=648?'
+    'https://pokeapi.co/api/v2/pokemon/?limit=150?'
   )
   const [nextUrl, setNextUrl] = useState()
   const [prevUrl, setPrevUrl] = useState()
@@ -75,31 +76,47 @@ function App() {
         <VStack>
           <Spacer />
           <Welcome />
-          <Input
-            bgColor="blue.100"
-            onChange={handleSearchFilter}
-            placeholder="Search pokemon by name"
-            w="50%"
-          />
-          <PokeCard data={pokeCardInfo} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/pokemon"
+              element={
+                <>
+                  <Input
+                    bgColor="blue.100"
+                    onChange={handleSearchFilter}
+                    placeholder="Search pokemon by name"
+                    w="50%"
+                  />
+                  <Pokemon
+                    pokemonData={
+                      filteredPokemonData ? filteredPokemonData : pokemonData
+                    }
+                    pokeInfo={(poke) => setPokeCardInfo(poke)}
+                  />
+                </>
+              }
+            ></Route>
+            <Route
+              path="/pokemon/:name"
+              element={<PokeCard data={pokeCardInfo} />}
+            />
+          </Routes>
+
           {console.log('pokemon data is', pokemonData)}
-          <Pokemon
-            pokemonData={
-              filteredPokemonData ? filteredPokemonData : pokemonData
-            }
-            pokeInfo={(poke) => setPokeCardInfo(poke)}
-          />
         </VStack>
         <Center mt="30px">
-          {prevUrl !== null ? (
+          {/* {prevUrl !== null ? (
             <Button onClick={() => getPrevUrl(prevUrl)}>Previous</Button>
-          ) : null}
-          <Image
-            onClick={() => setUrl('https://pokeapi.co/api/v2/pokemon/')}
-            src="/Images/pokeball.jpeg"
-            h="100px"
-          />
-          <Button onClick={() => getNextUrl(nextUrl)}>Next</Button>
+          ) : null} */}
+          <Link to="/">
+            <Image
+              // onClick={() => setUrl('https://pokeapi.co/api/v2/pokemon/')}
+              src="/Images/pokeball.jpeg"
+              h="100px"
+            />
+          </Link>
+          {/* <Button onClick={() => getNextUrl(nextUrl)}>Next</Button> */}
         </Center>
       </Box>
     </>

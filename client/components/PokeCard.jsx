@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Heading,
   Box,
@@ -7,7 +8,6 @@ import {
   VStack,
   Center,
 } from '@chakra-ui/react'
-import React from 'react'
 
 export default function PokeCard({ data }) {
   return (
@@ -15,7 +15,7 @@ export default function PokeCard({ data }) {
       {!data ? (
         ''
       ) : (
-        <Box>
+        <Box h="100vh">
           <Heading
             bgGradient="linear(to-l, #2D388A,#00AEEF)"
             bgClip="text"
