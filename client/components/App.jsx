@@ -22,7 +22,7 @@ function App() {
   const [pokeCardInfo, setPokeCardInfo] = useState()
   const [filter, setFilter] = useState('')
   const [url, setUrl] = useState(
-    'https://pokeapi.co/api/v2/pokemon/?limit=150?'
+    'https://pokeapi.co/api/v2/pokemon/?limit=648?'
   )
   const [nextUrl, setNextUrl] = useState()
   const [prevUrl, setPrevUrl] = useState()
