@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const request = require('superagent')
 
-// GET /api/v1/pokemon/
+// GET /api/v2/pokemon/
 router.get('/', (req, res) => {
   request
     .get('https://pokeapi.co/api/v2/pokemon/')
